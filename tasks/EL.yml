@@ -1,0 +1,10 @@
+---
+- name: add virtualbox rpm key
+  rpm_key: key='https://www.virtualbox.org/download/oracle_vbox.asc' state=present
+
+- name: add virtualbox yum repo
+  get_url: url='http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo' dest=/etc/yum.repos.d/virtualbox.repo
+
+- name: install virtualbox
+  yum: name=VirtualBox-{{virtualbox_version}}
+
