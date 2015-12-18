@@ -20,5 +20,5 @@
     - dkms
 
 - name: install virtualbox
-  yum: name=VirtualBox-{{virtualbox_version}}
+  yum: name=VirtualBox-{{virtualbox_version}} state=latest
 
