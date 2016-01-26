@@ -1,12 +1,19 @@
 ---
 - name: add virtualbox rpm key
-  rpm_key: key='https://www.virtualbox.org/download/oracle_vbox.asc' state=present
+  rpm_key: >
+    key='https://www.virtualbox.org/download/oracle_vbox.asc'
+    state=present
 
 - name: add virtualbox yum repo
-  get_url: url='http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo' dest=/etc/yum.repos.d/virtualbox.repo
+  get_url: >
+    url='http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo'
+    dest=/etc/yum.repos.d/virtualbox.repo
+    owner=root
+    group=root
+    mode=644
 
 - name: virtualbox dependencies
-  yum: name={{ item }}
+  package: name={{item}} state=latest
   with_items:
     - binutils
     - gcc
@@ -20,5 +27,9 @@
     - dkms
 
 - name: install virtualbox
-  yum: name=VirtualBox-{{virtualbox_version}} state=latest
+  package: >
+    name=VirtualBox-{{virtualbox_version}}
+    state=latest
 
+- name: install vbox drivers...
+  command: /usr/lib/virtualbox/vboxdrv.sh setup
