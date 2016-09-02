@@ -1,0 +1,18 @@
+---
+virtualbox_dep_pkgs:
+  - binutils
+  - gcc
+  - make
+  - patch
+  - libgomp
+  - glibc-headers
+  - glibc-devel
+  - kernel-headers
+  - kernel-PAE-devel
+  - dkms
+
+virtualbox_pkg_mgr: rpm
+virtualbox_rpm_repo_url: http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+virtualbox_postinstall_cfg:
+  - /usr/lib/virtualbox/vboxdrv.sh setup
+virtualbox_pkg_name: VirtualBox-{{virtualbox_version}}

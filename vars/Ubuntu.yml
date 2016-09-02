@@ -1,0 +1,10 @@
+---
+virtualbox_dep_pkgs:
+  - dkms
+  - libsdl-ttf2.0-0
+  - libsdl1.2debian
+
+virtualbox_pkg_mgr: apt
+virtualbox_postinstall_cfg:
+  - /sbin/rcvboxdrv setup
+virtualbox_pkg_name: virtualbox-{{virtualbox_version}}

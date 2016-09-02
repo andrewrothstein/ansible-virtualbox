@@ -1,0 +1,16 @@
+---
+- name: add virtualbox rpm key
+  become: yes
+  become_user: root
+  rpm_key: >
+    key={{virtualbox_key_url}}
+    state=present
+
+- name: add virtualbox yum repo
+  become: yes
+  become_user: root
+  get_url: >
+    url={{virtualbox_rpm_repo_url}}
+    dest=/etc/yum.repos.d/virtualbox.repo
+    mode=0644
+
