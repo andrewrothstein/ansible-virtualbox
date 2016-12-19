@@ -8,7 +8,7 @@ virtualbox_dep_pkgs:
   - glibc-headers
   - glibc-devel
   - kernel-headers
-  - kernel-PAE-devel
+  - kernel-devel
   - dkms
 
 virtualbox_pkg_mgr: rpm
