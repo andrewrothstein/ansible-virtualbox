@@ -13,7 +13,7 @@
   package: name={{item}} state=present
     
 - name: add pkg mgr config
-  include: '{{virtualbox_pkg_mgr}}.yml'
+  include_tasks: '{{virtualbox_pkg_mgr}}.yml'
 
 - name: install virtualbox
   become: yes
