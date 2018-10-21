@@ -1,4 +1,8 @@
 ---
-virtualbox_version : 5.2
-virtualbox_key_url: https://www.virtualbox.org/download/oracle_vbox.asc
-virtualbox_key_id: '98AB5139'
+virtualbox_version: 5.2
+virtualbox_key_mirror: https://www.virtualbox.org/download
+virtualbox_keys:
+  - name: oracle_vbox.asc
+    id: '98AB5139'
+  - name: oracle_vbox_2016.asc
+    id: '2980AECF'

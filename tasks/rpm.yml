@@ -2,8 +2,9 @@
 - name: add virtualbox rpm key
   become: yes
   become_user: root
+  with_items: '{{virtualbox_keys}}'
   rpm_key:
-    key: '{{virtualbox_key_url}}'
+    key: '{{virtualbox_key_mirror}}/{{item.name}}'
     state: present
 
 - name: add virtualbox yum repo
@@ -14,13 +15,9 @@
     description: VirtualBox YUM Repository
     baseurl: '{{virtualbox_yum_baseurl}}'
     gpgcheck: yes
-    gpgkey: https://www.virtualbox.org/download/oracle_vbox.asc
+    gpgkey: '{{virtualbox_key_mirror}}/oracle_vbox.asc'
     enabled: yes
     repo_gpgcheck: yes
   register: virtualbox_yum_added
 
-- name: update yum package cache for virtualbox repo
-  command: yum -q makecache -y --disablerepo='*' --enablerepo=virtualbox
-  when: virtualbox_yum_added.changed
-  changed_when: false
 

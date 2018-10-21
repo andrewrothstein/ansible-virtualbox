@@ -2,9 +2,10 @@
 - name : add virtualbox apt key
   become: yes
   become_user: root
+  with_items: '{{virtualbox_keys}}'
   apt_key:
-    url: '{{virtualbox_key_url}}'
-    id: '{{virtualbox_key_id}}'
+    url: '{{virtualbox_key_mirror}}/{{item.name}}'
+    id: '{{item.id}}'
 
 - name: add virtualbox apt repository
   become: yes
