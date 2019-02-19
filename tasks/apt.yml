@@ -2,15 +2,15 @@
 - name : add virtualbox apt key
   become: yes
   become_user: root
-  with_items: '{{virtualbox_keys}}'
+  with_items: '{{ virtualbox_keys }}'
   apt_key:
-    url: '{{virtualbox_key_mirror}}/{{item.name}}'
-    id: '{{item.id}}'
+    url: '{{ virtualbox_key_mirror }}/{{ item.name }}'
+    id: '{{ item.id }}'
 
 - name: add virtualbox apt repository
   become: yes
   become_user: root
   apt_repository:
     update_cache: yes
-    repo: 'deb http://download.virtualbox.org/virtualbox/debian {{ansible_distribution_release}} contrib'
+    repo: 'deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
 

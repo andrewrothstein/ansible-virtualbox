@@ -12,8 +12,8 @@ virtualbox_dep_pkgs:
   - dkms
 
 virtualbox_pkg_mgr: rpm
-virtualbox_yum_releasever: '{% if ansible_distribution_major_version|int >= 26 %}26{% else %}$releseaver{% endif %}'
-virtualbox_yum_baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/{{virtualbox_yum_releasever}}/$basearch
+virtualbox_yum_releasever: '{% if ansible_distribution_major_version|int >= 26 and ansible_distribution_major_version|int < 29 %}26{% else %}$releseaver{% endif %}'
+virtualbox_yum_baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/{{ virtualbox_yum_releasever }}/$basearch
 virtualbox_postinstall_cfg:
   - /usr/lib/virtualbox/vboxdrv.sh setup
 virtualbox_pkg_name: VirtualBox-{{virtualbox_version}}

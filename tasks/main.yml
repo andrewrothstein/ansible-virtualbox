@@ -1,35 +1,35 @@
 ---
 - name: resolve platform specific vars
-  include_vars: '{{item}}'
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 
 - name: install dep pkgs
   become: yes
   become_user: root
-  with_items: '{{virtualbox_dep_pkgs}}'
+  with_items: '{{ virtualbox_dep_pkgs }}'
   package:
-    name: '{{item}}'
+    name: '{{ item }}'
     state: present
-    
+
 - name: add pkg mgr config
-  include_tasks: '{{virtualbox_pkg_mgr}}.yml'
+  include_tasks: '{{ virtualbox_pkg_mgr }}.yml'
 
 - name: install virtualbox
   become: yes
   become_user: root
   package:
-    name: '{{virtualbox_pkg_name}}'
+    name: '{{ virtualbox_pkg_name }}'
     state: present
 
 - name: install vbox drivers...
   become: yes
   become_user: root
-  with_items: '{{virtualbox_postinstall_cfg}}'
-  command: '{{item}}'
+  with_items: '{{ virtualbox_postinstall_cfg }}'
+  command: '{{ item }}'
