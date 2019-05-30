@@ -1,3 +1,4 @@
+---
 dependencies:
 - role: andrewrothstein.epel
   version: v1.0.8
