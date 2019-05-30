@@ -1,6 +1,6 @@
 ---
 - name: add virtualbox rpm key
-  become: yes
+  become: true
   become_user: root
   with_items: '{{ virtualbox_keys }}'
   rpm_key:
@@ -8,16 +8,16 @@
     state: present
 
 - name: add virtualbox yum repo
-  become: yes
+  become: true
   become_user: root
   yum_repository:
     name: virtualbox
     description: VirtualBox YUM Repository
     baseurl: '{{ virtualbox_yum_baseurl }}'
-    gpgcheck: yes
+    gpgcheck: true
     gpgkey: '{{ virtualbox_key_mirror }}/oracle_vbox.asc'
-    enabled: yes
-    repo_gpgcheck: yes
+    enabled: true
+    repo_gpgcheck: true
   register: virtualbox_yum_added
 
 

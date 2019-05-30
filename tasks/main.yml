@@ -11,7 +11,7 @@
         - '{{ role_path }}/vars'
 
 - name: install dep pkgs
-  become: yes
+  become: true
   become_user: root
   with_items: '{{ virtualbox_dep_pkgs }}'
   package:
@@ -22,14 +22,14 @@
   include_tasks: '{{ virtualbox_pkg_mgr }}.yml'
 
 - name: install virtualbox
-  become: yes
+  become: true
   become_user: root
   package:
     name: '{{ virtualbox_pkg_name }}'
     state: present
 
 - name: install vbox drivers...
-  become: yes
+  become: true
   become_user: root
   with_items: '{{ virtualbox_postinstall_cfg }}'
   command: '{{ item }}'
