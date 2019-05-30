@@ -22,6 +22,7 @@ language: python
 python: '3.7'
 script:
   - ansible-galaxy-local-deps-write
+  # yamllint disable-line rule:line-length
   - dcb --upstreamgroup andrewrothstein --upstreamapp docker-ansible-role --alltags
     ${OS} --pullall --writeall --buildall --pushall
 services:

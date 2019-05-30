@@ -12,4 +12,5 @@
   become_user: root
   apt_repository:
     update_cache: true
+    # yamllint disable-line rule:line-length
     repo: 'deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'

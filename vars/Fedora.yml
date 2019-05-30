@@ -12,7 +12,8 @@ virtualbox_dep_pkgs:
   - dkms
 
 virtualbox_pkg_mgr: rpm
-virtualbox_yum_baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/{{ ansible_distribution_major_version | int }}/$basearch
+# yamllint disable-line rule:line-length
+virtualbox_yum_baseurl: "{{ virtualbox_url }}/rpm/fedora/{{ ansible_distribution_major_version | int }}/$basearch"
 virtualbox_postinstall_cfg:
   - /usr/lib/virtualbox/vboxdrv.sh setup
 virtualbox_pkg_name: VirtualBox-{{virtualbox_version}}
