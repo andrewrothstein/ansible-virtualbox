@@ -19,5 +19,3 @@
     enabled: true
     repo_gpgcheck: true
   register: virtualbox_yum_added
-
-
