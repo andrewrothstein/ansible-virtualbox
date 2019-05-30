@@ -1,32 +1,32 @@
 ---
 dependencies:
-- role: andrewrothstein.epel
-  version: v1.0.8
+  - role: andrewrothstein.epel
+    version: v1.0.8
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
   description: role that installs virtualbox
   galaxy_tags:
-  - development
-  - virtualization
+    - development
+    - virtualization
   license:
-  - MIT
+    - MIT
   min_ansible_version: 2.0
   platforms:
-  - name: EL
-    versions:
-    - 7
-  - name: Fedora
-    versions:
-    - 23
-    - 24
-    - 25
-    - 26
-    - 27
-    - 28
-    - 29
-  - name: Ubuntu
-    versions:
-    - trusty
-    - xenial
-    - bionic
+    - name: EL
+      versions:
+        - 7
+    - name: Fedora
+      versions:
+        - 23
+        - 24
+        - 25
+        - 26
+        - 27
+        - 28
+        - 29
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+        - bionic
