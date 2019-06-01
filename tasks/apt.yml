@@ -6,6 +6,10 @@
   apt_key:
     url: '{{ virtualbox_key_mirror }}/{{ item.name }}'
     id: '{{ item.id }}'
+  register: virtualbox_key
+  until: virtualbox_key is success
+  retries: 10
+  delay: 2
 
 - name: add virtualbox apt repository
   become: true

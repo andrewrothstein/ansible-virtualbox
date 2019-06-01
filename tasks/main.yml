@@ -17,6 +17,10 @@
   package:
     name: '{{ item }}'
     state: present
+  register: virtualbox_dep_pkgs_install
+  until: virtualbox_dep_pkgs_install is success
+  retries: 10
+  delay: 2
 
 - name: add pkg mgr config
   include_tasks: '{{ virtualbox_pkg_mgr }}.yml'
@@ -27,6 +31,10 @@
   package:
     name: '{{ virtualbox_pkg_name }}'
     state: present
+  register: virtualbox_install
+  until: virtualbox_install is success
+  retries: 10
+  delay: 2
 
 - name: install vbox drivers...
   become: true
