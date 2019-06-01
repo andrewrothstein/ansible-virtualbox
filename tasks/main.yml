@@ -10,6 +10,15 @@
       paths:
         - '{{ role_path }}/vars'
 
+- name: instal kernel-devel
+  package:
+    name: kernel-devel kernel kernel-headers
+    state: latest
+  register: kernel_pkgs
+  until: kernel_pkgs is success
+  retries: 10
+  delay: 2
+
 - name: install dep pkgs
   become: true
   become_user: root
