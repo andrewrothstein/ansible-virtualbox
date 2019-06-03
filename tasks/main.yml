@@ -10,7 +10,7 @@
       paths:
         - '{{ role_path }}/vars'
 
-- name: instal kernel-devel
+- name: install kernel-devel
   package:
     name: kernel-devel kernel kernel-headers
     state: latest
@@ -18,6 +18,8 @@
   until: kernel_pkgs is success
   retries: 10
   delay: 2
+  tags:
+    - skip_ansible_lint
 
 - name: install dep pkgs
   become: true
