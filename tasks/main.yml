@@ -13,12 +13,12 @@
 - name: install dep pkgs
   become: yes
   become_user: root
-  with_items: '{{ virtualbox_dep_pkgs }}'
   package:
-    name: '{{ item }}'
+    name: '{{ virtualbox_dep_pkgs|default([])}}'
     state: present
 
 - name: add pkg mgr config
+  when: virtualbox_pkg_mgr is defined
   include_tasks: '{{ virtualbox_pkg_mgr }}.yml'
 
 - name: install virtualbox

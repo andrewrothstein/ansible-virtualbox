@@ -1,0 +1,4 @@
+---
+virtualbox_pkg_name: virtualbox
+virtualbox_postinstall_cfg:
+  - /sbin/vboxconfig
