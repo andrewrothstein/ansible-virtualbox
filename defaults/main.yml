@@ -1,5 +1,5 @@
 ---
-virtualbox_version: 6.0
+virtualbox_version: 6.1
 virtualbox_key_mirror: https://www.virtualbox.org/download
 virtualbox_keys:
   - name: oracle_vbox.asc
