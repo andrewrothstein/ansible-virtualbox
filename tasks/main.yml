@@ -16,7 +16,7 @@
   become: true
   become_user: root
   package:
-    name: '{{ virtualbox_dep_pkgs|default([])}}'
+    name: '{{ virtualbox_dep_pkgs | default([]) }}'
     state: present
 
 - name: add pkg mgr config

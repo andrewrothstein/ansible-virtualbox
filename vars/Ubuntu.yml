@@ -7,4 +7,4 @@ virtualbox_dep_pkgs:
 virtualbox_pkg_mgr: apt
 virtualbox_postinstall_cfg:
   - /sbin/rcvboxdrv setup
-virtualbox_pkg_name: virtualbox-{{virtualbox_version}}
+virtualbox_pkg_name: virtualbox-{{ virtualbox_version }}
