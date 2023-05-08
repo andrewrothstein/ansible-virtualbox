@@ -1,0 +1,6 @@
+{% if virtualbox_networks_conf.ipv4 -%}
+* {{ virtualbox_networks_conf.ipv4 | join(" ") }}
+{% endif %}
+{%- if virtualbox_networks_conf.ipv6 -%}
+* {{ virtualbox_networks_conf.ipv6 | join(" ") }}
+{%- endif %}

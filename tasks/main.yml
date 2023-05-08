@@ -35,3 +35,11 @@
   become_user: root
   with_items: '{{ virtualbox_postinstall_cfg }}'
   command: '{{ item }}'
+
+- name: templatizing /etc/vbox/networks.conf
+  become: true
+  become_user: root
+  template:
+    src: templates/networks.conf.j2
+    dest: /etc/vbox/networks.conf
+    mode: 0644

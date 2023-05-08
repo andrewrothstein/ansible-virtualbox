@@ -1,5 +1,11 @@
 ---
-virtualbox_version: 6.1
+virtualbox_version: 7.0
+virtualbox_networks_conf:
+  ipv4:
+    - 10.0.0.0/8
+    - 192.168.0.0/16
+  ipv6:
+    - 2001::/64
 virtualbox_key_mirror: https://www.virtualbox.org/download
 virtualbox_keys:
   - name: oracle_vbox.asc
