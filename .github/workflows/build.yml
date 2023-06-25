@@ -27,10 +27,10 @@ jobs:
       fail-fast: false
       matrix:
         os:
-        - debian_buster
+        - debian_bookworm
         - debian_bullseye
-        - fedora_36
         - fedora_37
+        - fedora_38
         - rockylinux_8
         - rockylinux_9
         - ubuntu_focal
