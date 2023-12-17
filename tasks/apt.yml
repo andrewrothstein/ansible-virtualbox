@@ -1,5 +1,5 @@
 ---
-- name : add virtualbox apt key
+- name: Add virtualbox apt key
   become: true
   become_user: root
   with_items: '{{ virtualbox_keys }}'
@@ -7,7 +7,7 @@
     url: '{{ virtualbox_key_mirror }}/{{ item.name }}'
     id: '{{ item.id }}'
 
-- name: add virtualbox apt repository
+- name: Add virtualbox apt repository
   become: true
   become_user: root
   apt_repository:

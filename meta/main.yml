@@ -4,21 +4,21 @@ galaxy_info:
   company: BlackRock
   description: role that installs virtualbox
   galaxy_tags:
-  - development
-  - virtualization
-  license:
-  - MIT
+    - development
+    - virtualization
+  license: MIT
   min_ansible_version: 2.0
   platforms:
-  - name: EL
-    versions:
-    - 8
-    - 9
-  - name: Fedora
-    versions:
-    - 36
-    - 37
-  - name: Ubuntu
-    versions:
-    - focal
-    - jammy
+    - name: EL
+      versions:
+        - 8
+        - 9
+    - name: Fedora
+      versions:
+        - 38
+        - 39
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+  role_name: virtualbox

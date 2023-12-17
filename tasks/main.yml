@@ -1,8 +1,9 @@
 ---
-- include_role:
+- name: Include andrewrothstein.epel
+  ansible.builtin.include_role:
     name: andrewrothstein.epel
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -12,34 +13,34 @@
       paths:
         - '{{ role_path }}/vars'
 
-- name: install dep pkgs
+- name: Install dep pkgs
   become: true
   become_user: root
-  package:
+  ansible.builtin.package:
     name: '{{ virtualbox_dep_pkgs | default([]) }}'
     state: present
 
-- name: add pkg mgr config
+- name: Add pkg mgr config
   when: virtualbox_pkg_mgr is defined
-  include_tasks: '{{ virtualbox_pkg_mgr }}.yml'
+  ansible.builtin.include_tasks: '{{ virtualbox_pkg_mgr }}.yml'
 
-- name: install virtualbox
+- name: Install virtualbox
   become: true
   become_user: root
-  package:
+  ansible.builtin.package:
     name: '{{ virtualbox_pkg_name }}'
     state: present
 
-- name: install vbox drivers...
+- name: Install vbox drivers...
   become: true
   become_user: root
   with_items: '{{ virtualbox_postinstall_cfg }}'
-  command: '{{ item }}'
+  ansible.builtin.command: '{{ item }}'
 
-- name: templatizing /etc/vbox/networks.conf
+- name: Templatizing /etc/vbox/networks.conf
   become: true
   become_user: root
-  template:
+  ansble.builtin.template:
     src: templates/networks.conf.j2
     dest: /etc/vbox/networks.conf
-    mode: 0644
+    mode: '644'
