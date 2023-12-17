@@ -40,7 +40,7 @@
 - name: Templatizing /etc/vbox/networks.conf
   become: true
   become_user: root
-  ansble.builtin.template:
+  ansible.builtin.template:
     src: templates/networks.conf.j2
     dest: /etc/vbox/networks.conf
     mode: '644'
