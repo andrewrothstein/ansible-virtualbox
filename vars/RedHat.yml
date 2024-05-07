@@ -15,4 +15,4 @@ virtualbox_pkg_mgr: rpm
 virtualbox_yum_baseurl: http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch
 virtualbox_postinstall_cfg:
   - /usr/lib/virtualbox/vboxdrv.sh setup
-virtualbox_pkg_name: VirtualBox-{{virtualbox_version}}
+virtualbox_pkg_name: VirtualBox-{{ virtualbox_version }}

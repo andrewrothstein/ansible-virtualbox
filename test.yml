@@ -1,4 +1,5 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.virtualbox
+  hosts: all
   roles:
     - role: '{{ playbook_dir }}'

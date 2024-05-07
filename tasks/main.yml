@@ -36,6 +36,7 @@
   become_user: root
   with_items: '{{ virtualbox_postinstall_cfg }}'
   ansible.builtin.command: '{{ item }}'
+  changed_when: false
 
 - name: Templatizing /etc/vbox/networks.conf
   become: true

@@ -1,5 +1,5 @@
 ---
-- name: add virtualbox rpm key
+- name: Add virtualbox rpm key
   become: true
   become_user: root
   with_items: '{{ virtualbox_keys }}'
@@ -7,7 +7,7 @@
     key: '{{ virtualbox_key_mirror }}/{{ item.name }}'
     state: present
 
-- name: add virtualbox yum repo
+- name: Add virtualbox yum repo
   become: true
   become_user: root
   ansible.builtin.yum_repository:
