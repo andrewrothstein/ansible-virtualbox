@@ -20,28 +20,24 @@
     name: '{{ virtualbox_dep_pkgs | default([]) }}'
     state: present
 
-- name: Add pkg mgr config
+- name: Using package manager to install virtualbox v{{ virtualbox_version }}
   when: virtualbox_pkg_mgr is defined
-  ansible.builtin.include_tasks: '{{ virtualbox_pkg_mgr }}.yml'
+  block:
+    - name: Configuring {{ virtualbox_pkg_mgr }} and installing {{ virtualbox_pkg_name }}
+      ansible.builtin.include_tasks: '{{ virtualbox_pkg_mgr }}.yml'
 
-- name: Install virtualbox
-  become: true
-  become_user: root
-  ansible.builtin.package:
-    name: '{{ virtualbox_pkg_name }}'
-    state: present
+    - name: Install vbox drivers...
+      become: true
+      become_user: root
+      with_items: '{{ virtualbox_postinstall_cfg }}'
+      ansible.builtin.command: '{{ item }}'
+      when: virtualbox_install_drivers | bool
+      changed_when: false
 
-- name: Install vbox drivers...
-  become: true
-  become_user: root
-  with_items: '{{ virtualbox_postinstall_cfg }}'
-  ansible.builtin.command: '{{ item }}'
-  changed_when: false
-
-- name: Templatizing /etc/vbox/networks.conf
-  become: true
-  become_user: root
-  ansible.builtin.template:
-    src: templates/networks.conf.j2
-    dest: /etc/vbox/networks.conf
-    mode: '644'
+    - name: Templatizing /etc/vbox/networks.conf
+      become: true
+      become_user: root
+      ansible.builtin.template:
+        src: templates/networks.conf.j2
+        dest: /etc/vbox/networks.conf
+        mode: '644'

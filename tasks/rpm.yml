@@ -19,3 +19,11 @@
     enabled: true
     repo_gpgcheck: true
   register: virtualbox_yum_added
+
+- name: Installing {{ virtualbox_pkg_name }}
+  become: true
+  become_user: root
+  ansible.builtin.dnf:
+    name: '{{ virtualbox_pkg_name }}'
+    state: present
+    update_cache: true

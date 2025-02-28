@@ -1,5 +1,8 @@
 ---
 - name: Testing andrewrothstein.virtualbox
   hosts: all
+  vars:
+    # for in container testing omit the kernel module building
+    virtualbox_install_drivers: false
   roles:
     - role: '{{ playbook_dir }}'

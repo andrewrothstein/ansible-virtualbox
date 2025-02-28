@@ -12,4 +12,15 @@
   become_user: root
   ansible.builtin.apt_repository:
     update_cache: true
-    repo: 'deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
+    repo: >-
+      deb
+      http://download.virtualbox.org/virtualbox/debian
+      {{ ansible_distribution_release }}
+      contrib
+
+- name: Installing {{ virtualbox_pkg_name }}
+  become: true
+  become_user: root
+  ansible.builtin.package:
+    name: '{{ virtualbox_pkg_name }}'
+    state: present
