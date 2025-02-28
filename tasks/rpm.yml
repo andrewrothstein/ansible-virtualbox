@@ -15,7 +15,7 @@
     description: VirtualBox YUM Repository
     baseurl: '{{ virtualbox_yum_baseurl }}'
     gpgcheck: true
-    gpgkey: '{{ virtualbox_key_mirror }}/oracle_vbox.asc'
+    gpgkey: '{{ virtualbox_key_mirror }}/oracle_vbox_2016.asc'
     enabled: true
     repo_gpgcheck: true
   register: virtualbox_yum_added
