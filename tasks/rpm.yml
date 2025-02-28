@@ -18,7 +18,6 @@
     gpgkey: '{{ virtualbox_key_mirror }}/oracle_vbox_2016.asc'
     enabled: true
     repo_gpgcheck: true
-  register: virtualbox_yum_added
 
 - name: Installing {{ virtualbox_pkg_name }}
   become: true
