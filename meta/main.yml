@@ -20,10 +20,10 @@ galaxy_info:
         - '9'
     - name: Fedora
       versions:
-        - '38'
-        - '39'
+        - '40'
+        - '41'
     - name: Ubuntu
       versions:
-        - focal
         - jammy
+        - noble
   role_name: virtualbox
